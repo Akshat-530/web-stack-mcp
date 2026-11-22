@@ -18,7 +18,7 @@ services:
     ports:
       - "127.0.0.1:4032:4032"
     volumes:
-      - ./data:/data
+      - ./config/web-stack.config.example.json:/data/web-stack/config.json:ro
     # Mount host drives if you want the browsers to touch local files:
     # - type: bind
     #   source: "C:\\"
