@@ -21,12 +21,12 @@
 ## 🚀 What is this?
 
 ```text
-┌──────────────────────────────────────────────────────────────────────┐
-│   Instead of wiring EIGHT MCP servers into your client…               │
+┌────────────────────────────────────────────────────────────────────────┐
+│   Instead of wiring EIGHT MCP servers into your client…                │
 │   eight entries · eight ports · eight credential sets · eight failures │
 │                                                                        │
-│   Connect ONE.  🕸️ Web-Stack merges them all behind a single endpoint. │
-└──────────────────────────────────────────────────────────────────────┘
+│   Connect ONE.  🕸️ Web-Stack merges them all behind a single endpoint  │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 The container runs every upstream on `127.0.0.1`, the **aggregator** re-exposes
@@ -76,7 +76,7 @@ flowchart LR
 
 ## 🧰 Tool coverage — `127 tools`
 
-| | Upstream | Emoji | Adds | Tools |
+| | Upstream | | Adds | Tools |
 |---|---|---|---|---|
 | 🔎 | **tavily** | search & research | web search · research · crawl · map · extract | `5` |
 | 🔥 | **firecrawl** | scraping | scrape · crawl · search · agent · monitors · data providers | `34` |
