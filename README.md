@@ -76,7 +76,7 @@ flowchart LR
 
 ## 🧰 Tool coverage — `127 tools`
 
-| | Emoji | Upstream | Adds | Tools |
+| Emoji | Upstream | Adds | Tools |
 |---|---|---|---|---|
 | 🔎 | **tavily** | search & research | web search · research · crawl · map · extract | `5` |
 | 🔥 | **firecrawl** | scraping | scrape · crawl · search · agent · monitors · data providers | `34` |
