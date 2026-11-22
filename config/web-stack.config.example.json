@@ -1,0 +1,108 @@
+{
+  "_help": "All-in-one Web-Stack config: every upstream runs on 127.0.0.1 inside this container.",
+  "_preset": "a-to-z",
+  "server": {
+    "name": "Web-Stack",
+    "version": "1.0.0"
+  },
+  "keyProxy": {
+    "base": "http://127.0.0.1",
+    "relays": {
+      "tavily": 4016,
+      "firecrawl": 4017,
+      "context7": 4022
+    }
+  },
+  "upstreams": [
+    {
+      "name": "tavily",
+      "label": "tavily",
+      "url": "http://127.0.0.1:4009/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "description": "Paid best-in-class web search / research / crawl / map / extract."
+    },
+    {
+      "name": "firecrawl",
+      "label": "firecrawl",
+      "url": "http://127.0.0.1:4008/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [
+        "firecrawl_feedback",
+        "firecrawl_search_feedback"
+      ],
+      "description": "Paid scraping + bot-protected crawl + agent + monitors + paper/dev/gov research."
+    },
+    {
+      "name": "context7",
+      "label": "context7",
+      "url": "http://127.0.0.1:4023/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "description": "Versioned API/library documentation lookups."
+    },
+    {
+      "name": "fatsearch",
+      "label": "fatsearch",
+      "url": "http://127.0.0.1:4027/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "description": "Free URL/PDF -> compact markdown reader."
+    },
+    {
+      "name": "playwright",
+      "label": "playwright",
+      "url": "http://127.0.0.1:4002/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "description": "Headless Chromium automation + accessibility snapshots."
+    },
+    {
+      "name": "chrome",
+      "label": "chrome",
+      "url": "http://127.0.0.1:4003/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [
+        "click",
+        "drag",
+        "fill",
+        "fill_form",
+        "hover",
+        "handle_dialog",
+        "press_key",
+        "type_text",
+        "take_screenshot",
+        "upload_file",
+        "resize_page",
+        "wait_for"
+      ],
+      "description": "Chrome DevTools: traces, network, CSS, lighthouse, heap, screencast (+ page nav/refs)."
+    },
+    {
+      "name": "stealth",
+      "label": "stealth",
+      "url": "http://127.0.0.1:4007/mcp/",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "tokenEnv": "STEALTH_BROWSER_MCP_AUTH_TOKEN",
+      "description": "Undetectable (nodriver) browser for bot-protected pages."
+    },
+    {
+      "name": "scrapling",
+      "label": "scrapling",
+      "url": "http://127.0.0.1:4033/mcp",
+      "prefix": "",
+      "include": [],
+      "exclude": [],
+      "tokenEnv": "SCRAPLING_MCP_AUTH_TOKEN",
+      "description": "Free TLS/JA3+HTTP/3 impersonation, stealth browser, Cloudflare solve, session save/load."
+    }
+  ]
+}

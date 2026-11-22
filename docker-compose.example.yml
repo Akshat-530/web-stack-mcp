@@ -1,0 +1,25 @@
+services:
+  web-stack:
+    image: ghcr.io/akshat-530/web-stack-mcp:latest
+    container_name: web-stack
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - KEY_ROTATE_SERVICES=tavily,firecrawl,context7
+      - WEBSTACK_CONFIG=/data/web-stack/config.json
+      - TAVILY_API_BASE_URL=http://127.0.0.1:4016
+      - TAVILY_API_KEY=proxy-rotates-keys
+      - FIRECRAWL_API_URL=http://127.0.0.1:4017
+      - FIRECRAWL_API_KEY=proxy-rotates-keys
+      - CONTEXT7_API_URL=http://127.0.0.1:4022
+      - CONTEXT7_API_KEY=ctx7sk-proxy-rotates-keys
+      - FATS_TELEMETRY=0
+      - DO_NOT_TRACK=1
+    ports:
+      - "127.0.0.1:4032:4032"
+    volumes:
+      - ./data:/data
+    # Mount host drives if you want the browsers to touch local files:
+    # - type: bind
+    #   source: "C:\\"
+    #   target: /host/c
