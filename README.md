@@ -6,7 +6,7 @@
 
 **127 tools · built-in API-key rotation · zero keys in the box**
 
-[![repo](https://img.shields.io/badge/repo-private-red?style=for-the-badge&logo=github)](#)
+[![repo](https://img.shields.io/badge/repo-public-2ea043?style=for-the-badge&logo=github)](#)
 [![tools](https://img.shields.io/badge/tools-127-6f42c1?style=for-the-badge)](#-tool-coverage)
 [![upstreams](https://img.shields.io/badge/upstreams-8-1f6feb?style=for-the-badge)](#-tool-coverage)
 [![docker](https://img.shields.io/badge/ghcr.io-web--stack--mcp-2496ed?style=for-the-badge&logo=docker&logoColor=white)](#-quick-start)
