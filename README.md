@@ -21,12 +21,12 @@
 ## 🚀 What is this?
 
 ```text
-┌────────────────────────────────────────────────────────────────────────┐
-│   Instead of wiring EIGHT MCP servers into your client…                │
+┌──────────────────────────────────────────────────────────────────────┐
+│   Instead of wiring EIGHT MCP servers into your client…               │
 │   eight entries · eight ports · eight credential sets · eight failures │
 │                                                                        │
-│   Connect ONE.  🕸️ Web-Stack merges them all behind a single endpoint  │
-└────────────────────────────────────────────────────────────────────────┘
+│   Connect ONE.  🕸️ Web-Stack merges them all behind a single endpoint. │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
 The container runs every upstream on `127.0.0.1`, the **aggregator** re-exposes
@@ -76,7 +76,7 @@ flowchart LR
 
 ## 🧰 Tool coverage — `127 tools`
 
-| | Upstream | | Adds | Tools |
+| | Upstream | Emoji | Adds | Tools |
 |---|---|---|---|---|
 | 🔎 | **tavily** | search & research | web search · research · crawl · map · extract | `5` |
 | 🔥 | **firecrawl** | scraping | scrape · crawl · search · agent · monitors · data providers | `34` |
@@ -119,6 +119,54 @@ docker compose -f docker-compose.example.yml up -d
 ```
 
 Then connect your MCP client ➜ **`http://127.0.0.1:4032/mcp`** 🎉
+
+---
+
+## 🔗 Connect your MCP client
+
+Point your client at the single endpoint — **no auth needed** (loopback only).
+
+**Claude Desktop / Cursor** (`mcpServers`):
+
+```json
+{
+  "mcpServers": {
+    "web-stack": {
+      "type": "remote",
+      "url": "http://127.0.0.1:4032/mcp"
+    }
+  }
+}
+```
+
+**Kilo** (`kilo.jsonc`):
+
+```jsonc
+{
+  "mcp": {
+    "web-stack": {
+      "type": "remote",
+      "url": "http://127.0.0.1:4032/mcp",
+      "enabled": true,
+      "timeout": 600000
+    }
+  }
+}
+```
+
+Reload the client → **127 tools** appear. 🎯 Sanity check: call **`web_stack_status`**.
+
+---
+
+## 🩺 Troubleshooting
+
+| 😵 Symptom | 🛠️ Fix |
+|---|---|
+| Container up but no tools | `docker exec web-stack supervisorctl status` — a program may be restarting; `docker logs web-stack` |
+| `401` from an upstream | auth token empty/blank in `.env` (`STEALTH_BROWSER_MCP_AUTH_TOKEN`, `SCRAPLING_MCP_AUTH_TOKEN`) |
+| Rate-limited / keys dying | call **`web_stack_rotation`** → check pool size in `.env` |
+| Port `4032` already in use | change the host mapping: `-p 127.0.0.1:4033:4032` |
+| Want fewer / more tools | edit `config/web-stack.config.example.json` → mount at `/data/web-stack/config.json` → restart |
 
 ---
 
